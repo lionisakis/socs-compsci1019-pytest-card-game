@@ -25,3 +25,13 @@ def test_stard_hand():
     assert score_hand([ace,card])==20
     assert score_hand([ace,card,five])==15
     assert score_hand([ace,card,five,eight])==0
+
+ace = suits[0][0]+str("A")
+ten = suits[0][0] + str("10")
+two = suits[0][0] + str("2")
+seven = suits[0][0] + str("7")
+nine = suits[0][0] + str("9")
+@pytest.mark.parametrize("hand,score",[('',0),([ace,ten],21),([ace,ten,ten,two],0),([ace,ace,nine],21),([seven,seven,seven],21)])
+def test_score_hand_combinations(hand,score):
+    assert score_hand(hand)==score
+
